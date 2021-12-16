@@ -269,6 +269,7 @@ var BB = {
     endGame: function() {
         BB.gameState = GAMESTATE_STOP;
         vibrate();
+        save(BB.score);
     },
     
     // Game Clear
@@ -277,9 +278,19 @@ var BB = {
         else alert("Cleared!");
         
         BB.gameState = GAMESTATE_STOP;
+        save(BB.score);
     }
-}
 
+    
+}
+var save = function(score){
+          var name = prompt("Please write your name.")
+
+          var Score = ncmb.DataStore("Score");
+          new Score().set("name",name)
+          .set("score",score)
+          .save;
+}
 
 function init() {
     // Accelerometer
@@ -469,3 +480,11 @@ function getUa() {
 }
 
 })();
+var save = function(score){
+  var name = prompt("Please write your name.")
+
+  var Score = ncmb.DataStore("Score");
+  new Score().set("name",name)
+  .set("score",score)
+  .save;
+}
